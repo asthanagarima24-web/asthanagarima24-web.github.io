@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Garima Asthana | Periodontist & Researcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0a1628', light: '#112240', mid: '#1a3354' },
+            teal: { DEFAULT: '#0d9488', light: '#14b8a6', glow: '#2dd4bf' },
+            gold: { DEFAULT: '#c9a84c', light: '#e2c479', pale: '#f5e6c8' },
+            cream: { DEFAULT: '#f8f4ef', warm: '#fdf6ee' },
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            body: ['DM Sans', 'sans-serif'],
+            italic: ['Playfair Display', 'serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'fade-in': 'fadeIn 1s ease forwards',
+            'shimmer': 'shimmer 2.5s infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp: { '0%': { opacity: 0, transform: 'translateY(30px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            shimmer: { '0%,100%': { opacity: 0.7 }, '50%': { opacity: 1 } },
+            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a1628;
+      color: #f8f4ef;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* Gold gradient text */
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #c9a84c 0%, #f5e6c8 50%, #c9a84c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Teal gradient text */
+    .text-teal-gradient {
+      background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glowing border cards */
+    .card-glow {
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: linear-gradient(135deg, rgba(17,34,64,0.9) 0%, rgba(26,51,84,0.7) 100%);
+      backdrop-filter: blur(12px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-glow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .card-glow:hover { border-color: rgba(201, 168, 76, 0.5); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,76,0.1); }
+    .card-glow:hover::before { opacity: 1; }
+
+    /* Section fade-in observer */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Typing cursor */
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: #c9a84c;
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Nav glass */
+    .nav-glass {
+      background: rgba(10, 22, 40, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    /* Decorative line */
+    .gold-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    }
+
+    /* Hero background mesh */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(13,148,136,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #0a1628 0%, #0d1e35 100%);
+    }
+
+    /* Pill badge */
+    .pill {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: rgba(201,168,76,0.1);
+      color: #e2c479;
+    }
+
+    /* Stat accent line */
+    .stat-card {
+      border-left: 2px solid #c9a84c;
+      padding-left: 1rem;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #c9a84c;
+      border: 2px solid #0a1628;
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.3);
+      flex-shrink: 0;
+    }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #0d9488;
+    }
+
+    /* Hamburger */
+    .ham-line {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #f8f4ef;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    #ham.open .ham-line:nth-child(1) { transform: rotate(45deg) translate(3px, 3px); }
+    #ham.open .ham-line:nth-child(2) { opacity: 0; }
+    #ham.open .ham-line:nth-child(3) { transform: rotate(-45deg) translate(3px, -3px); }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* Scroll progress */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #c9a84c, #2dd4bf);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* Patent card */
+    .patent-card {
+      border: 1px solid rgba(201,168,76,0.15);
+      background: rgba(17,34,64,0.6);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      transition: all 0.3s ease;
+    }
+    .patent-card:hover { border-color: rgba(201,168,76,0.4); background: rgba(17,34,64,0.9); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0a1628; }
+    ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full border border-gold flex items-center justify-center">
+        <span class="text-gold-gradient font-display font-bold text-sm">GA</span>
+      </div>
+      <span class="font-display font-semibold text-cream text-sm tracking-wide hidden sm:block">Dr. Garima Asthana</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-body text-cream/70">
+      <a href="#about" class="hover:text-gold transition-colors duration-200">About</a>
+      <a href="#experience" class="hover:text-gold transition-colors duration-200">Experience</a>
+      <a href="#research" class="hover:text-gold transition-colors duration-200">Research</a>
+      <a href="#patents" class="hover:text-gold transition-colors duration-200">Patents</a>
+      <a href="#education" class="hover:text-gold transition-colors duration-200">Education</a>
+    </div>
+
+    <!-- CTA + Hamburger -->
+    <div class="flex items-center gap-4">
+      <a href="mailto:asthana.garima24@gmail.com" class="hidden md:block text-xs px-4 py-2 rounded border border-gold/40 text-gold hover:bg-gold/10 transition-all duration-200 font-body tracking-wide">
+        Get in Touch
+      </a>
+      <!-- Hamburger -->
+      <button id="ham" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Menu">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="nav-glass md:hidden px-5 pb-4">
+    <div class="flex flex-col gap-4 pt-2 text-sm font-body text-cream/80">
+      <a href="#about" class="mobile-link hover:text-gold transition-colors py-1 border-b border-white/5">About</a>
+      <a href="#experience" class="mobile-link hover:text-gold transition-colors py-1 border-b border-white/5">Experience</a>
+      <a href="#research" class="mobile-link hover:text-gold transition-colors py-1 border-b border-white/5">Research</a>
+      <a href="#patents" class="mobile-link hover:text-gold transition-colors py-1 border-b border-white/5">Patents</a>
+      <a href="#education" class="mobile-link hover:text-gold transition-colors py-1 border-b border-white/5">Education</a>
+      <a href="mailto:asthana.garima24@gmail.com" class="text-gold mt-1">✉ asthana.garima24@gmail.com</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20">
+  <!-- Decorative circles -->
+  <div class="absolute top-20 right-0 w-64 h-64 sm:w-96 sm:h-96 rounded-full border border-teal/10 animate-float" style="transform: translate(30%, -10%)"></div>
+  <div class="absolute top-32 right-10 w-40 h-40 sm:w-60 sm:h-60 rounded-full border border-gold/10 animate-float" style="animation-delay: 2s; transform: translate(10%, 10%)"></div>
+  <div class="absolute bottom-20 left-0 w-48 h-48 rounded-full border border-teal/5 animate-float" style="animation-delay: 4s; transform: translate(-30%, 10%)"></div>
+
+  <!-- Radial glow -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style="background: radial-gradient(circle, rgba(13,148,136,0.06) 0%, transparent 70%)"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 py-20 relative z-10">
+    <div class="max-w-3xl">
+      <!-- Tag -->
+      <div class="mb-6 reveal">
+        <span class="section-label">Periodontist · Researcher · Innovator</span>
+      </div>
+
+      <!-- Name -->
+      <h1 class="font-display hero-title text-5xl sm:text-6xl lg:text-7xl font-light leading-tight text-cream mb-2 reveal" style="transition-delay: 0.1s">
+        Dr. Garima
+      </h1>
+      <h1 class="font-display hero-title text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight mb-6 reveal" style="transition-delay: 0.2s">
+        <span class="text-gold-gradient">Asthana</span>
+      </h1>
+
+      <!-- Typing animation -->
+      <div class="font-display text-xl sm:text-2xl text-cream/80 mb-8 min-h-[2rem] reveal" style="transition-delay: 0.3s">
+        <span id="typed-text" class="italic"></span><span class="cursor"></span>
+      </div>
+
+      <!-- Bio snippet -->
+      <p class="font-body text-cream/60 text-base sm:text-lg leading-relaxed max-w-xl mb-10 reveal" style="transition-delay: 0.4s">
+        MDS in Periodontology & Implantology with 14+ years of clinical experience. Senior Lecturer & Deputy Research Director at Manav Rachna Dental College, with 13 publications, 11 patents, and a passion for bridging oral health with systemic medicine.
+      </p>
+
+      <!-- Stats row -->
+      <div class="flex flex-wrap gap-6 sm:gap-10 mb-10 reveal" style="transition-delay: 0.5s">
+        <div class="stat-card">
+          <div class="text-2xl sm:text-3xl font-display font-semibold text-gold-gradient">13</div>
+          <div class="text-xs text-cream/50 font-body tracking-wide">Publications</div>
+        </div>
+        <div class="stat-card">
+          <div class="text-2xl sm:text-3xl font-display font-semibold text-gold-gradient">11</div>
+          <div class="text-xs text-cream/50 font-body tracking-wide">Patents</div>
+        </div>
+        <div class="stat-card">
+          <div class="text-2xl sm:text-3xl font-display font-semibold text-gold-gradient">14+</div>
+          <div class="text-xs text-cream/50 font-body tracking-wide">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="text-2xl sm:text-3xl font-display font-semibold text-gold-gradient">8</div>
+          <div class="text-xs text-cream/50 font-body tracking-wide">Conference Papers</div>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 reveal" style="transition-delay: 0.6s">
+        <a href="#research" class="px-6 py-3 rounded bg-gradient-to-r from-teal to-teal-light text-navy font-body font-medium text-sm tracking-wide hover:shadow-lg hover:shadow-teal/30 transition-all duration-300 hover:-translate-y-0.5">
+          View Research
+        </a>
+        <a href="#patents" class="px-6 py-3 rounded border border-gold/40 text-gold font-body font-medium text-sm tracking-wide hover:bg-gold/10 transition-all duration-300 hover:-translate-y-0.5">
+          Explore Patents
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <span class="text-xs font-body tracking-widest text-cream/50">SCROLL</span>
+    <div class="w-px h-12 bg-gradient-to-b from-gold to-transparent"></div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ═══════════════ ABOUT / SPECIALIZATIONS ═══════════════ -->
+<section id="about" class="py-20 sm:py-28 relative">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <!-- Left: About -->
+      <div class="reveal">
+        <p class="section-label mb-4">About</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-light text-cream mb-6">
+          Where Science<br/><span class="italic text-gold-gradient">Meets Precision</span>
+        </h2>
+        <div class="gold-line w-24 mb-6"></div>
+        <p class="font-body text-cream/65 text-base leading-relaxed mb-4">
+          Dr. Garima Asthana is a specialist periodontist and implantologist whose career spans clinical excellence, cutting-edge research, and academic leadership. Currently serving as Senior Lecturer and Deputy Research Director at Manav Rachna Dental College, she is also a PhD candidate exploring the frontier of regenerative periodontics.
+        </p>
+        <p class="font-body text-cream/65 text-base leading-relaxed mb-6">
+          Her research focuses on the oral-systemic interface — particularly the bidirectional relationship between periodontal disease, diabetes mellitus, and obesity — earning her the International Best Researcher Award at the International Congress for Research Excellence 2024.
+        </p>
+        <!-- Memberships -->
+        <div class="flex flex-wrap gap-2">
+          <span class="pill">Indian Society of Periodontics</span>
+          <span class="pill">Indian Dental Association</span>
+          <span class="pill">Delhi Diabetic Forum</span>
+        </div>
+      </div>
+
+      <!-- Right: Specializations -->
+      <div class="reveal" style="transition-delay: 0.2s">
+        <p class="section-label mb-4">Specializations</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-light text-cream mb-6">
+          Clinical<br/><span class="italic text-teal-gradient">Expertise</span>
+        </h2>
+        <div class="gold-line w-24 mb-6"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- Spec items -->
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div>
+              <div class="font-body text-sm text-cream/90 font-medium">Non-Surgical Periodontal Therapy</div>
+            </div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Surgical Periodontal Therapy</div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Laser-Assisted Periodontal Therapy</div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Implant Placement</div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Regenerative Periodontal Procedures</div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Mucogingival Corrections</div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Crown Lengthening</div>
+          </div>
+          <div class="card-glow rounded-lg p-4 flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-teal mt-2 flex-shrink-0"></div>
+            <div class="font-body text-sm text-cream/90 font-medium">Root Coverage Procedures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line opacity-30"></div>
+
+<!-- ═══════════════ AWARDS ═══════════════ -->
+<section class="py-16 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal text-center mb-12">
+      <p class="section-label mb-3">Recognition</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-light text-cream">Awards & <span class="italic text-gold-gradient">Honours</span></h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-glow rounded-xl p-6 text-center reveal">
+        <div class="text-3xl mb-3">🏆</div>
+        <div class="font-display text-sm font-semibold text-gold mb-2">International Best Researcher Award</div>
+        <div class="text-xs text-cream/50 font-body">International Congress for Research Excellence 2024</div>
+      </div>
+      <div class="card-glow rounded-xl p-6 text-center reveal" style="transition-delay:0.1s">
+        <div class="text-3xl mb-3">🎓</div>
+        <div class="font-display text-sm font-semibold text-gold mb-2">Intramural Research Grant</div>
+        <div class="text-xs text-cream/50 font-body">MRIIRS 2024–27</div>
+      </div>
+      <div class="card-glow rounded-xl p-6 text-center reveal" style="transition-delay:0.2s">
+        <div class="text-3xl mb-3">🎤</div>
+        <div class="font-display text-sm font-semibold text-gold mb-2">Chairperson</div>
+        <div class="text-xs text-cream/50 font-body">IDA Noida State Conference, Nov 2024</div>
+      </div>
+      <div class="card-glow rounded-xl p-6 text-center reveal" style="transition-delay:0.3s">
+        <div class="text-3xl mb-3">🌍</div>
+        <div class="font-display text-sm font-semibold text-gold mb-2">Guinness World Record Participant</div>
+        <div class="text-xs text-cream/50 font-body">Dentium Smile Saga, Apr 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line opacity-30"></div>
+
+<!-- ═══════════════ EXPERIENCE TIMELINE ═══════════════ -->
+<section id="experience" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal mb-14">
+      <p class="section-label mb-3">Career Path</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-light text-cream">Professional <span class="italic text-gold-gradient">Experience</span></h2>
+      <div class="gold-line w-24 mt-4"></div>
+    </div>
+
+    <div class="relative">
+      <!-- Vertical line desktop -->
+      <div class="hidden md:block absolute left-[180px] top-0 bottom-0 w-px bg-gradient-to-b from-gold/40 via-gold/20 to-transparent"></div>
+
+      <div class="space-y-8 md:space-y-10">
+        <!-- Timeline items -->
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">Jan 2026 – Present</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">Deputy Research Director</div>
+              <div class="font-body text-sm text-teal mb-2">Manav Rachna Dental College, SDS, MRIIRS, Faridabad</div>
+              <div class="pill">Current Role</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start" style="transition-delay:0.1s">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">Apr 2024 – Present</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">Senior Lecturer</div>
+              <div class="font-body text-sm text-teal">Manav Rachna Dental College, SDS, MRIIRS, Faridabad</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start" style="transition-delay:0.15s">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">Aug 2022 – Mar 2024</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">Research Officer</div>
+              <div class="font-body text-sm text-teal">Lady Hardinge Medical College, New Delhi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start" style="transition-delay:0.2s">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">May 2019 – Jul 2022</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">PG Resident – Periodontics & Implantology</div>
+              <div class="font-body text-sm text-teal">ITS Dental College, Hospital & Research Centre, Greater Noida</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start" style="transition-delay:0.25s">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">Sep 2014 – Apr 2019</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">Dental Practitioner</div>
+              <div class="font-body text-sm text-teal">Smile Dental Care, New Delhi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start" style="transition-delay:0.3s">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">Oct 2013 – Aug 2014</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">Resident</div>
+              <div class="font-body text-sm text-teal">Pt. Madan Mohan Malviya Hospital, New Delhi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col md:flex-row gap-4 md:gap-10 items-start" style="transition-delay:0.35s">
+          <div class="md:w-[170px] flex-shrink-0 text-right">
+            <span class="font-body text-xs text-cream/40 tracking-wide">Jan 2012 – May 2013</span>
+          </div>
+          <div class="flex items-start gap-4 flex-1">
+            <div class="hidden md:flex items-center justify-center mt-1.5"><div class="timeline-dot"></div></div>
+            <div class="card-glow rounded-xl p-5 flex-1">
+              <div class="font-display text-lg font-semibold text-gold mb-1">Dental Officer</div>
+              <div class="font-body text-sm text-teal">ESIC Hospital, Faridabad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line opacity-30"></div>
+
+<!-- ═══════════════ RESEARCH PUBLICATIONS ═══════════════ -->
+<section id="research" class="py-20 sm:py-28" style="background: linear-gradient(180deg, transparent, rgba(13,148,136,0.04), transparent)">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal mb-14">
+      <p class="section-label mb-3">Academic Work</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-light text-cream">Research <span class="italic text-teal-gradient">Publications</span></h2>
+      <div class="gold-line w-24 mt-4"></div>
+    </div>
+
+    <div class="space-y-4">
+      <!-- Publication items -->
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">1</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Asthana G, Chhina S. <span class="text-cream font-medium">Interplay between Periodontal Disease and Diabetes Mellitus.</span> Indian J Med Spec 2021; 12:122–6.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.05s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">2</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Asthana G et al. <span class="text-cream font-medium">Barriers to Seeking Dental Treatments.</span> Natl J Integr Res Med 2021; 12(3):87–91.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.1s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">3</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Choudhary SB, Asthana G et al. <span class="text-cream font-medium">Comparative Evaluation of Ridge Width for Implant Placement.</span> J Contemp Dent Pract 2022; 23(2):186–192.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.12s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">4</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Asthana G. <span class="text-cream font-medium">Predictive Role of Biomarkers in Long Term Stability of Dental Implants</span> [Book]. Lambert Academic Publishing, ISBN: 978-620-5-49226-0.</p>
+          <span class="pill mt-2 inline-block">Book</span>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.14s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">5</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Madhav K, Pandita A, Asthana G et al. <span class="text-cream font-medium">Antifungal Activity of Silver Nanoparticles Against Azole Resistant Candida Albicans.</span> Eur. Chem. Bull. 2023, 12(Special Issue 5).</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.16s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">6</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Asthana G, Barman C. <span class="text-cream font-medium">Facilitated Orthodontic Tooth Movement with Periodontal Intervention.</span> J Dent Panacea. 2023;5(3):138–141.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.18s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">7</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Chikara S, Asthana G et al. <span class="text-cream font-medium">Comparative Evaluation of Irrigating Techniques.</span> IP Indian J Conserv Endod 2024;9(1):27.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.2s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">8</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Shivlingesh KK, Asthana G et al. <span class="text-cream font-medium">Herbal Versus Non-herbal Dentifrice in Maintaining Oral Health.</span> Cureus. 2024 Jul;16(7).</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.22s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">9</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Asthana G, Palwankar P, Pandey R. <span class="text-cream font-medium">Association of Obesity and Type 2 Diabetes with Periodontitis.</span> Cureus 16(9):e68779.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.24s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">10</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Mittal N, Asthana G et al. <span class="text-cream font-medium">Comparative Assessment of Stress among Medical and Nonmedical Undergraduates.</span> Indian J Med Spec. 2025;16(1):60–4.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.26s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">11</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Deshpande A, Singh NP, Asthana G. <span class="text-cream font-medium">Ethical Principles in Clinical Medicine</span> [Book Chapter]. Evangel Publishing, ISBN: 978-93-90616-32-9.</p>
+          <span class="pill mt-2 inline-block">Book Chapter</span>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.28s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">12</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Kandwal S, Asthana G et al. <span class="text-cream font-medium">Oral Manifestations in Diabetes Mellitus.</span> Indian J Med Spec 2025;16:232–8.</p>
+        </div>
+      </div>
+      <div class="card-glow rounded-xl p-5 sm:p-6 reveal flex gap-4 items-start" style="transition-delay:0.3s">
+        <span class="font-display text-2xl text-gold/30 font-bold leading-none mt-1 w-7 flex-shrink-0">13</span>
+        <div>
+          <p class="font-body text-sm text-cream/80 leading-relaxed">Asthana G et al. <span class="text-cream font-medium">The Oral-Systemic Interface: Interlinking Diabetes Mellitus and Oral Infections.</span> Indian J Med Spec 2026;17:12–6.</p>
+          <span class="pill mt-2 inline-block">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conference papers -->
+    <div class="mt-16">
+      <div class="reveal mb-8">
+        <p class="section-label mb-3">Conferences</p>
+        <h3 class="font-display text-3xl sm:text-4xl font-light text-cream">Conference <span class="italic text-gold-gradient">Papers</span></h3>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="patent-card reveal">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Stem Cells in Periodontal Regeneration</div>
+          <div class="text-xs text-teal/80">ISP PG Conference, Bengaluru · Nov 2019</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.05s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Candida albicans at Subgingival Sites</div>
+          <div class="text-xs text-teal/80">ISP PG Convention, Goa · Mar 2020</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.1s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Azole-Resistant Candida albicans Characterization</div>
+          <div class="text-xs text-teal/80">ISP PG Convention, Pune · 2021</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.15s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Type 2 Diabetes, Obesity & Periodontal Disease</div>
+          <div class="text-xs text-teal/80">ISP Annual Conference, Amritsar · 2023</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.2s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Regenerative Periodontics in Endo-Perio Lesions</div>
+          <div class="text-xs text-teal/80">IDA Noida State Conference · Nov 2024</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.25s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Periimplantitis: Saving the Ailing</div>
+          <div class="text-xs text-teal/80">World Congress of Implantology, New Delhi · Nov 2024</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.3s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Ginger Biomolecule Scaffold Evaluation</div>
+          <div class="text-xs text-teal/80">Global Conclave on Oral Health Innovation · Feb 2025</div>
+        </div>
+        <div class="patent-card reveal" style="transition-delay:0.35s">
+          <div class="font-body text-sm text-cream/85 font-medium mb-1">Osteogenic Potential of Salvadora persica on MG-63 Cell Line</div>
+          <div class="text-xs text-teal/80">Bioconverge 2025, MRIIRS · Oct 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line opacity-30"></div>
+
+<!-- ═══════════════ PATENTS ═══════════════ -->
+<section id="patents" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal mb-14">
+      <p class="section-label mb-3">Innovation</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-light text-cream">Patents & <span class="italic text-gold-gradient">Inventions</span></h2>
+      <div class="gold-line w-24 mt-4"></div>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="card-glow rounded-xl p-5 reveal">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2024</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Chair-Side LED Indicator Periodontal Probe</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.05s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2024</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Hybrid Bamboo Toothbrush</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.1s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-gold/20 text-gold font-body">Indian Patent</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Plant-Derived EV Scaffold & GTR Membrane</div>
+        <div class="text-xs text-gold/60 mt-1">Published</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.12s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Clip-On Laser Protective Eyewear</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.14s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Laser Protective Eyewear</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.16s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Papillary Depigmentation Microneedling Pen</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.18s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Sustainable Toothbrush with Dental Floss</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.2s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Anti-Skid Kidney Tray</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.22s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-gold/20 text-gold font-body">Indian Design · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Dental Tweezer</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.24s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-gold/20 text-gold font-body">Indian Design · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Periodontal Probe</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+
+      <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.26s">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs px-2 py-0.5 rounded bg-teal/20 text-teal font-body">UK Patent · 2025</span>
+        </div>
+        <div class="font-display text-base font-semibold text-cream">Medical Utility Tray</div>
+        <div class="text-xs text-gold/60 mt-1">Granted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line opacity-30"></div>
+
+<!-- ═══════════════ EDUCATION ═══════════════ -->
+<section id="education" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal mb-14">
+      <p class="section-label mb-3">Credentials</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-light text-cream">Education & <span class="italic text-teal-gradient">Certifications</span></h2>
+      <div class="gold-line w-24 mt-4"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Education -->
+      <div>
+        <h3 class="font-display text-xl font-semibold text-gold mb-6">Academic Qualifications</h3>
+        <div class="space-y-4">
+          <div class="card-glow rounded-xl p-5 reveal">
+            <div class="flex justify-between items-start flex-wrap gap-2">
+              <div>
+                <div class="font-display text-base font-semibold text-cream">PhD (Pursuing)</div>
+                <div class="font-body text-xs text-teal mt-1">Manav Rachna Dental College, MRIIRS</div>
+              </div>
+              <span class="pill">Ongoing</span>
+            </div>
+          </div>
+          <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.05s">
+            <div class="flex justify-between items-start flex-wrap gap-2">
+              <div>
+                <div class="font-display text-base font-semibold text-cream">MDS – Periodontology & Implantology</div>
+                <div class="font-body text-xs text-teal mt-1">ITS Dental College & Hospital, Greater Noida · 2022</div>
+              </div>
+              <span class="font-display text-lg text-gold font-semibold">74%</span>
+            </div>
+          </div>
+          <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.1s">
+            <div class="flex justify-between items-start flex-wrap gap-2">
+              <div>
+                <div class="font-display text-base font-semibold text-cream">PG Diploma – Medical Cosmetology</div>
+                <div class="font-body text-xs text-teal mt-1">Apollo Hospitals, New Delhi · 2014</div>
+              </div>
+              <span class="font-display text-lg text-gold font-semibold">94%</span>
+            </div>
+          </div>
+          <div class="card-glow rounded-xl p-5 reveal" style="transition-delay:0.15s">
+            <div class="flex justify-between items-start flex-wrap gap-2">
+              <div>
+                <div class="font-display text-base font-semibold text-cream">BDS</div>
+                <div class="font-body text-xs text-teal mt-1">Sardar Patel PG Institute, Lucknow · 2012</div>
+              </div>
+              <span class="font-display text-lg text-gold font-semibold">70%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div>
+        <h3 class="font-display text-xl font-semibold text-gold mb-6">Certifications</h3>
+        <div class="space-y-3">
+          <div class="patent-card reveal flex items-start gap-3">
+            <div class="w-2 h-2 rounded-full bg-gold mt-1.5 flex-shrink-0"></div>
+            <div>
+              <div class="font-body text-sm text-cream/90 font-medium">Fellowship in Medical Cosmetology</div>
+              <div class="text-xs text-teal/70">ILAMED · 2023</div>
+            </div>
+          </div>
+          <div class="patent-card reveal flex items-start gap-3" style="transition-delay:0.05s">
+            <div class="w-2 h-2 rounded-full bg-gold mt-1.5 flex-shrink-0"></div>
+            <div>
+              <div class="font-body text-sm text-cream/90 font-medium">Injectables & Threads in Facial Aesthetics</div>
+              <div class="text-xs text-teal/70">2024</div>
+            </div>
+          </div>
+          <div class="patent-card reveal flex items-start gap-3" style="transition-delay:0.1s">
+            <div class="w-2 h-2 rounded-full bg-gold mt-1.5 flex-shrink-0"></div>
+            <div>
+              <div class="font-body text-sm text-cream/90 font-medium">PG Diploma in Medical Cosmetology</div>
+              <div class="text-xs text-teal/70">Apollo Hospitals · 2014</div>
+            </div>
+          </div>
+          <div class="patent-card reveal flex items-start gap-3" style="transition-delay:0.15s">
+            <div class="w-2 h-2 rounded-full bg-gold mt-1.5 flex-shrink-0"></div>
+            <div>
+              <div class="font-body text-sm text-cream/90 font-medium">Essential GCP Training</div>
+              <div class="text-xs text-teal/70">Brookwood Global, UK · 2022</div>
+            </div>
+          </div>
+          <div class="patent-card reveal flex items-start gap-3" style="transition-delay:0.2s">
+            <div class="w-2 h-2 rounded-full bg-gold mt-1.5 flex-shrink-0"></div>
+            <div>
+              <div class="font-body text-sm text-cream/90 font-medium">ICH-GCP & Advance ICH-GCP</div>
+              <div class="text-xs text-teal/70">2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="py-12 text-center" style="background: linear-gradient(180deg, #0a1628, #06101e)">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="font-display text-3xl font-light text-gold-gradient mb-2">Dr. Garima Asthana</div>
+    <div class="font-body text-xs text-cream/40 tracking-widest mb-6">MDS · PERIODONTOLOGIST · RESEARCHER</div>
+    <div class="flex justify-center gap-6 flex-wrap text-sm font-body text-cream/50">
+      <a href="mailto:asthana.garima24@gmail.com" class="hover:text-gold transition-colors">✉ asthana.garima24@gmail.com</a>
+      <span>☎ +91-8468888012</span>
+      <span>DCI Reg: 11451-A</span>
+    </div>
+    <div class="gold-line w-32 mx-auto mt-8 mb-4"></div>
+    <p class="text-xs text-cream/20 font-body">© 2025 Dr. Garima Asthana · All rights reserved</p>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // Hamburger toggle
+  const ham = document.getElementById('ham');
+  const mobileMenu = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  // Intersection observer for reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Typing animation
+  const phrases = [
+    'MDS in Periodontology & Implantology',
+    'Senior Lecturer & Deputy Research Director',
+    'Consultant Periodontist',
+    '11 Patents · 13 Publications',
+    'Bridging Oral & Systemic Health',
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typedText = document.getElementById('typed-text');
+
+  function type() {
+    const current = phrases[phraseIndex];
+    if (!isDeleting) {
+      typedText.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+    } else {
+      typedText.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+    }
+    setTimeout(type, isDeleting ? 45 : 70);
+  }
+  setTimeout(type, 800);
+</script>
+</body>
+</html>
